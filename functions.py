@@ -141,7 +141,7 @@ def get_age(user):
 
 from operator import itemgetter
 
-# users.sort(key=get_age)
+users.sort(key=get_age)
 
 # users.sort(key=lambda user: user["age"])
 
