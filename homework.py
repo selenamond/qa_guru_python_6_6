@@ -95,27 +95,32 @@ def test_readable_function():
     open_browser(browser_name="Chrome")
     go_to_companyname_homepage(page_url="https://companyname.com")
     find_registration_button_on_login_page(page_url="https://companyname.com/login",
-    button_text = "Register")
+                                           button_text="Register")
 
 
-def rename_function(func, *arg):
-    changed_func_name = func.replace('_', ' ').title()
-    result = changed_func_name + ' [' + ', '.join(arg) + ']'
+def rename_function(func, *args):
+    changed_func_name = func.__name__.replace('_', ' ').title()
+    changed_args = ', '.join([*args])
+    result = f'{changed_func_name} [{changed_args}]'
+
     print(result)
     return result
 
+
 def open_browser(browser_name):
-    actual_result = rename_function(open_browser.__name__, browser_name)
+    actual_result = rename_function(open_browser, browser_name)
 
     assert actual_result == "Open Browser [Chrome]"
 
 
 def go_to_companyname_homepage(page_url):
-    actual_result = rename_function(go_to_companyname_homepage.__name__, page_url)
+    actual_result = rename_function(go_to_companyname_homepage, page_url)
+
     assert actual_result == "Go To Companyname Homepage [https://companyname.com]"
 
 
 def find_registration_button_on_login_page(page_url, button_text):
-    actual_result = rename_function(find_registration_button_on_login_page.__name__,
+    actual_result = rename_function(find_registration_button_on_login_page,
                                     page_url, button_text)
+
     assert actual_result == "Find Registration Button On Login Page [https://companyname.com/login, Register]"
