@@ -78,7 +78,7 @@ def test_find_suitable_user():
         {"name": "Stanislav", "age": 15},
         {"name": "Maria", "age": 18},
     ]
-
+#suitable_users = [i for i in users if i['age'] < 20] - вариант с list comprehensions
 
 # Сделайте функцию, которая будет печатать
 # читаемое имя переданной ей функции и значений аргументов.
